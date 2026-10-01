@@ -1,0 +1,21 @@
+{
+  "name": "medical-appointments",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Systeme de gestion des rendez-vous medicaux - monorepo backend NestJS + frontend React",
+  "scripts": {
+    "install:all": "npm --prefix apps/backend install --no-bin-links && npm --prefix apps/frontend install --no-bin-links",
+    "dev": "npm run dev:backend & npm run dev:frontend",
+    "dev:backend": "npm --prefix apps/backend run start:dev",
+    "dev:frontend": "npm --prefix apps/frontend run dev",
+    "build": "npm --prefix apps/backend run build && npm --prefix apps/frontend run build",
+    "lint": "npm --prefix apps/backend run lint",
+    "test": "npm --prefix apps/backend run test",
+    "db:up": "docker run -d --name medical-db -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=medical_appointments -p 5432:5432 postgres:16-alpine",
+    "db:down": "docker rm -f medical-db",
+    "typecheck": "npm --prefix apps/backend run typecheck && npm --prefix apps/frontend run typecheck"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
